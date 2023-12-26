@@ -1,42 +1,16 @@
-FROM ubuntu as dev
+FROM elixir:latest
 
-RUN apt-get update -qq && \
-  apt-get install -qq -y \
-  curl \
-  git \
-  dirmngr \
-  gpg \
-  gawk \
-  unzip \
-  build-essential \
-  autoconf \
-  libssl-dev \
-  libncurses5-dev \
-  m4 \
-  libssh-dev
+RUN apt-get update && \
+    apt-get install -y postgresql-client && \
+    apt-get install -y inotify-tools && \
+    apt-get install -y npm && \
+    mix local.hex && \
+    mix archive.install hex phx_new && \
+    mix local.rebar
 
-RUN useradd -ms $(which bash) asdf
+ENV APP_HOME /app
+RUN mkdir $APP_HOME
+WORKDIR $APP_HOME
+EXPOSE 4000
 
-USER asdf
-
-RUN git clone https://github.com/asdf-vm/asdf.git $HOME/.asdf --branch v0.8.1 && \
-  echo '. $HOME/.asdf/asdf.sh' >> $HOME/.bashrc && \
-  echo '. $HOME/.asdf/asdf.sh' >> $HOME/.profile
-
-ENV PATH /home/asdf/.asdf/bin:/home/asdf/.asdf/shims:$PATH
-
-RUN /bin/bash -c "\
-  asdf plugin-add elixir && \
-  asdf plugin-add erlang && \
-  asdf plugin-add nodejs \
-  "
-
-WORKDIR /app
-
-COPY .tool-versions /app
-
-RUN /bin/bash -c "ls -la && asdf install"
-
-ENV LANG C.UTF-8
-
-WORKDIR /workspace
+CMD ["iex"]
