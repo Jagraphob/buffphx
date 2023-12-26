@@ -1,0 +1,11 @@
+{
+  "dockerComposeFile": ["docker-compose.yml"],
+  "workspaceFolder": "/workspace/buffphx",
+  "service": "app_dev",
+  "extensions": [
+    "jakebecker.elixir-ls",
+    "eamodio.gitlens",
+    "streetsidesoftware.code-spell-checker"
+  ],
+  "forwardPorts": [4000]
+}

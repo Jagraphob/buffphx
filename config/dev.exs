@@ -2,10 +2,11 @@ import Config
 
 # Configure your database
 config :buffphx, Buffphx.Repo,
-  username: System.get_env("DB_USER"),
-  password: System.get_env("DB_PASS"),
-  hostname: System.get_env("DB_HOST"),
-  database: System.get_env("DB_NAME"),
+  username: System.get_env("POSTGRES_USER"),
+  password: System.get_env("POSTGRES_PASS"),
+  hostname: System.get_env("POSTGRES_HOST"),
+  database: System.get_env("POSTGRES_NAME"),
+  port:     System.get_env("POSTGRES_PORT"),
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
