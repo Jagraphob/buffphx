@@ -4,7 +4,7 @@
 
 To start your Phoenix development env server:
 
-  * Run `MIX_ENV=dev mix phx.server`
+  * Run `mix phx.server`
 
   Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
@@ -23,3 +23,11 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
 
   * Console into container `docker exec -it <mycontainer> bash` bash
   * Connect to psql once in container `psql -h localhost -U <username>`
+
+  * Dev mailbox : http://localhost:4000/dev/mailbox
+
+
+### registered users
+
+  * user: bugs@bunny.com
+  * pass: handyman-polio-bronze
