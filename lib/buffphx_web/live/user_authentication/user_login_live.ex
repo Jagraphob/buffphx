@@ -3,7 +3,7 @@ defmodule BuffphxWeb.UserLoginLive do
 
   def render(assigns) do
     ~H"""
-    <div class="mx-auto max-w-sm">
+    <div>
       <.header class="text-center">
         Sign in to account
         <:subtitle>
