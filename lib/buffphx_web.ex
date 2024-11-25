@@ -42,8 +42,8 @@ defmodule BuffphxWeb do
         formats: [:html, :json],
         layouts: [html: BuffphxWeb.Layouts]
 
+      use Gettext, backend: BuffphxWeb.Gettext
       import Plug.Conn
-      import BuffphxWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -85,7 +85,7 @@ defmodule BuffphxWeb do
       import Phoenix.HTML
       # Core UI components and translation
       import BuffphxWeb.CoreComponents
-      import BuffphxWeb.Gettext
+      use Gettext, backend: BuffphxWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS
